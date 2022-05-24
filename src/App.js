@@ -1,7 +1,8 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { BrowserRouter as Router,  Routes,  Route } from 'react-router-dom';
 import MainPage from './pages/MainPage/MainPage';
 import ListPage from './pages/ListPage/ListPage';
+import BasketPage from './pages/BasketPage/BasketPage';
 
 import './reset.css';
 import './common.css';
@@ -9,9 +10,14 @@ import './common.css';
 class App extends React.Component {
   render() {
     return (
-      <div className="app">
-        <Route path="/" exact component={MainPage} />
-        <Route path="/list/:id" exact component={ListPage} />
+      <div>
+        <Router>
+          <Routes>
+          <Route path='/' element={<MainPage/>} />
+          <Route path="/list/:id" element={<ListPage/>} />
+          <Route path="/basket" element={<BasketPage/>} />
+          </Routes>
+        </Router>
       </div>
     );
   }
